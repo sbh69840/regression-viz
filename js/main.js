@@ -8,24 +8,39 @@ export const regressionPlot = new Chart(ctx, {
         datasets: [{
             label: "X-Y Regression",
             data: [{
-                x: 0,
-                y: 5
+                x: 20,
+                y: 50
             }, {
-                x: 5,
+                x: 50,
                 y: 10
             }, {
                 x: 8,
-                y: 5
+                y: 50
             }, {
                 x: 15,
-                y: 0
+                y: 30
             }],
             borderColor: "#3A3839",
             backgroundColor: "#ECECEC",
             pointStyle: 'rectRot',
             radius: 4,
             borderWidth: 3,
-        }]
+        },
+        {
+            type: 'line',
+            label: "y = a + bx",
+            data: [{
+                x: 0,
+                y: 55.5
+            }, {
+                x: 100,
+                y: -32.6
+            }
+            ],
+            borderColor: "rgba(153, 102, 255, 1)",
+            fill: false
+        }
+        ]
     },
     options: {
         responsive: true,
@@ -39,7 +54,17 @@ export const regressionPlot = new Chart(ctx, {
                 position: 'bottom'
             }
         },
-        onClick: captureOnClickCoordinates
+        onClick: captureOnClickCoordinates,
+        scales: {
+            x: {
+                min: 0,
+                max: 100
+            },
+            y: {
+                min: 0,
+                max: 100
+            }
+        }
     }
 });
 
