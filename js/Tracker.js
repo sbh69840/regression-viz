@@ -1,6 +1,7 @@
 
 import { regressionPlot } from "./main.js";
 import { roundTo1 } from "./utils.js";
+import {calculateRegressionParams} from "./RegParams.js";
 
 export function captureOnClickCoordinates(evt) {
     // Canvas coordinates are relative to the canvas element.
@@ -13,6 +14,8 @@ export function captureOnClickCoordinates(evt) {
 
     // Add to the chart dataset.
     regressionPlot.data.datasets[0].data.push({x: dataX, y: dataY});
+
+    calculateRegressionParams ();
 
     //update the chart
     regressionPlot.update();

@@ -5,6 +5,10 @@ const ctx = document.getElementById('regressionPlot').getContext('2d');
 export const regressionPlot = new Chart(ctx, {
     type: 'scatter',
     data: {
+        regressionPrarams: {
+            a: 0, // weight parameter
+            b: 0 // bias parameter
+        },
         datasets: [{
             label: "X-Y Regression",
             data: [{
