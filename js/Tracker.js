@@ -9,6 +9,7 @@ import {
     yAxisMaxVal,
     regressionData,
 } from "./constants.js";
+import {calculateRegressionParams} from "./RegParams.js";
 
 const chartPosition = Chart.helpers.getRelativePosition;
 
@@ -29,6 +30,8 @@ function addNewDatapoint(dataX, dataY, _nearbyElements) {
 
     // Add to the chart dataset.
     regressionData.push(dataPoint);
+
+    calculateRegressionParams ();
 
     //update the chart
     regressionPlot.update();
