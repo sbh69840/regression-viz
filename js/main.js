@@ -1,49 +1,67 @@
-import { captureOnClickCoordinates } from "./Tracker.js";
+'use strict';
 
-const ctx = document.getElementById('regressionPlot').getContext('2d');
+import {
+    regressionData,
+    xAxisMaxVal,
+    xAxisMinVal,
+    yAxisMaxVal,
+    yAxisMinVal,
+} from "./constants.js";
+import {
+    captureOnClickCoordinates,
+    captureAddButtonCoordinates,
+    resetPlotDataPoints
+} from "./Tracker.js";
+
+const ctx = document.getElementById("regressionPlot").getContext("2d");
 
 export const regressionPlot = new Chart(ctx, {
-    type: 'scatter',
+    type: "scatter",
     data: {
         regressionPrarams: {
             a: 0, // weight parameter
             b: 0 // bias parameter
         },
-        datasets: [{
-            label: "X-Y Regression",
-            data: [{
-                x: 0,
-                y: 5
-            }, {
-                x: 5,
-                y: 10
-            }, {
-                x: 8,
-                y: 5
-            }, {
-                x: 15,
-                y: 0
-            }],
-            borderColor: "#3A3839",
-            backgroundColor: "#ECECEC",
-            pointStyle: 'rectRot',
-            radius: 4,
-            borderWidth: 3,
-        }]
+        datasets: [
+            {
+                label: "X-Y Regression",
+                data: regressionData,
+                borderColor: "#3A3839",
+                backgroundColor: "#ECECEC",
+                pointStyle: "rectRot",
+                radius: 4,
+                borderWidth: 3,
+            },
+        ],
     },
     options: {
         responsive: true,
+        scales: {
+            x: {
+                max: xAxisMaxVal,
+                min: xAxisMinVal,
+            },
+            y: {
+                max: yAxisMaxVal,
+                min: yAxisMinVal,
+            },
+        },
         plugins: {
             legend: {
-                position: 'top',
+                position: "top",
             },
             title: {
                 display: true,
-                text: 'Regression Plot',
-                position: 'bottom'
-            }
+                text: "Regression Plot",
+                position: "bottom",
+            },
         },
-        onClick: captureOnClickCoordinates
-    }
+        onClick: captureOnClickCoordinates,
+    },
 });
 
+const addButton = document.getElementById("addButton");
+addButton.addEventListener("click", captureAddButtonCoordinates);
+
+const resetButton = document.getElementById("resetState");
+resetButton.addEventListener("click", resetPlotDataPoints);
