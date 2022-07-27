@@ -1,4 +1,3 @@
-// Part B - Sanya
 import { regressionPlot } from "./main.js";
 
 export function calculateRegressionParams () {

@@ -1,4 +1,3 @@
-// Part C - Shivaraj
 'use strict';
 import {
     xAxisMaxVal, xAxisMinVal,

@@ -32,8 +32,7 @@ function addNewDatapoint(dataX, dataY, _nearbyElements) {
 
     // Add to the chart dataset.
     regressionData.push(dataPoint);
-    const numberOfPointsOnCanvas = regressionPlot.data.datasets[0].data.length;
-    if(numberOfPointsOnCanvas>1){
+    if(regressionData.length>1){
         calculateRegressionParams ();
         drawLine();
     }
