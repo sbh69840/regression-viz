@@ -1,4 +1,3 @@
-// Part B - Sanya
 import { regressionPlot } from "./main.js";
 
 export function calculateRegressionParams () {
@@ -17,15 +16,15 @@ export function calculateRegressionParams () {
     const meanOfY = sumY/numberOfPointsOnCanvas;
 
     regressionPlot.data.datasets[0].data.forEach(ele => {
-        numerator += (ele.x - meanOfX)*(ele.y - meanOfY); // change it to a more meaningful variable name
-        denominator += (ele.x - meanOfX)*(ele.x - meanOfX); // change it to a more meaningful variable name
+        numerator += ele.x * (ele.y - meanOfY); // change it to a more meaningful variable name
+        denominator += ele.x * (ele.x - meanOfX); // change it to a more meaningful variable name
     });
 
     const weight = numerator/denominator;
     const bias = meanOfY - (weight*meanOfX);
 
-    regressionPlot.data.regressionPrarams.a = weight;
-    regressionPlot.data.regressionPrarams.b = bias;
+    regressionPlot.data.regressionPrarams.a = bias;
+    regressionPlot.data.regressionPrarams.b = weight;
 
     console.log (regressionPlot.data.regressionPrarams);
 

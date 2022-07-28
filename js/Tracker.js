@@ -8,8 +8,10 @@ import {
     yAxisMinVal,
     yAxisMaxVal,
     regressionData,
+    defaultLine,
 } from "./constants.js";
 import {calculateRegressionParams} from "./RegParams.js";
+import {drawLine} from "./Plotter.js";
 
 const chartPosition = Chart.helpers.getRelativePosition;
 
@@ -30,8 +32,10 @@ function addNewDatapoint(dataX, dataY, _nearbyElements) {
 
     // Add to the chart dataset.
     regressionData.push(dataPoint);
-
-    calculateRegressionParams ();
+    if(regressionData.length>1){
+        calculateRegressionParams ();
+        drawLine();
+    }
 
     //update the chart
     regressionPlot.update();
@@ -63,5 +67,9 @@ export function captureAddButtonCoordinates() {
 
 export function resetPlotDataPoints() {
     regressionData.length = 0;
+    defaultLine[0]['x'] = xAxisMinVal;
+    defaultLine[0]['y'] = yAxisMinVal;
+    defaultLine[1]['x'] = xAxisMinVal;
+    defaultLine[1]['y'] = yAxisMinVal;
     regressionPlot.update();
 }

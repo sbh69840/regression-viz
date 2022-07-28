@@ -6,6 +6,7 @@ import {
     xAxisMinVal,
     yAxisMaxVal,
     yAxisMinVal,
+    defaultLine
 } from "./constants.js";
 import {
     captureOnClickCoordinates,
@@ -19,8 +20,8 @@ export const regressionPlot = new Chart(ctx, {
     type: "scatter",
     data: {
         regressionPrarams: {
-            a: 0, // weight parameter
-            b: 0 // bias parameter
+            a: 0, // bias parameter
+            b: 0 // weight parameter
         },
         datasets: [
             {
@@ -32,6 +33,13 @@ export const regressionPlot = new Chart(ctx, {
                 radius: 4,
                 borderWidth: 3,
             },
+            {
+                type: 'line',
+                label: "y = a + bx",
+                data: defaultLine,
+                borderColor: "rgba(153, 102, 255, 1)",
+                fill: false
+            }
         ],
     },
     options: {
