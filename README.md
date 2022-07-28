@@ -1,6 +1,8 @@
 # regression-viz
 Regression simplified with visual representation
 
+## Visit the site: https://sbh69840.github.io/regression-viz/
+
 PART 1 
 1. Setup a X-Y canvas
 2. Track/grasp the mouse click on the X-Y plane.
